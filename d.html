@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validación de Certificado</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #fff; color: #333; line-height: 1.5; }
+
+        /* Barra superior */
+        .top-bar {
+            background-color: #202F50;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo-text {
+            color: red;
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .menu-icon, .social-icon { color: #fff; font-size: 1.4rem; }
+
+        /* Aviso válido */
+        .valid-banner {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        /* Contenedor principal */
+        .container {
+            padding: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tarjeta de datos */
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-bottom: 1px solid #ddd;
+        }
+        .card-body { padding: 1.5rem; }
+        .data-row {
+            display: flex;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .data-row:last-child { border-bottom: none; }
+        .label {
+            font-weight: 600;
+            width: 120px;
+            color: #444;
+        }
+        .value { flex: 1; color: #222; }
+
+        /* Sección QR */
+        .qr-section {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .qr-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #202F50;
+        }
+        .qr-img {
+            max-width: 200px;
+            margin: 0 auto 0.5rem;
+            display: block;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .qr-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        footer b { color: #202F50; }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <header class="top-bar">
+        <span class="menu-icon">☰</span>
+        <span class="logo-text">ande</span>
+        <span class="social-icon">f</span>
+    </header>
+
+    <!-- Aviso de certificado válido -->
+    <div class="valid-banner">CERTIFICADO VÁLIDO</div>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <div class="card">
+            <div class="card-header">Validación de Autenticidad de Certificado</div>
+            <div class="card-body">
+                <div class="data-row">
+                    <span class="label">Cédula</span>
+                    <span class="value">701640376</span>
+                </div>
+                <div class="data-row">
+                    <span class="label">Nombre</span>
+                    <span class="value">ARCE CAMPOS HEYLIN VANESSA</span>
+                </div>
+                <div class="data-row">
+                    <span class="label">Día</span>
+                    <span class="value">Viernes 23 de Octubre de 2026</span>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 <b>Sindicato ANDE</b> · Dpto. Informática</p>
+    </footer>
+</body>
+</html>
