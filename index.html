@@ -1,144 +1,340 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Validación de Certificado</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { background-color: #fff; color: #333; line-height: 1.5; }
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="headMain">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Asociación Nacional de Educadores</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+    <link rel="icon" href="https://apv.ande.cr/images/IconLogo.ico" />
+    
+    <!-- Hojas de estilo de Bootstrap y Fuentes originales -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-        /* Barra superior */
-        .top-bar {
-            background-color: #202F50;
-            padding: 1rem 1.5rem;
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f6f6f6;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        header {
+            width: 95%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        header nav {
+            width: 100%;
+            margin: auto;
+            background: #202F50;
+            z-index: 1000;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin-bottom: 0 !important;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        header nav ul li a {
+            color: #fff !important;
+            padding: 20px;
+            display: block;
+            text-decoration: none !important;
+            font-size: 14px;
+        }
+
+        header nav ul li a span {
+            margin-right: 4px;
+        }
+
+        header nav ul li:hover {
+            background: #32497A;
+        }
+
+        .content-titulo {
+            margin: 20px 0px 20px 0px;
+            display: table;
+            width: 100%;
+            position: relative;
+        }
+
+        .content-titulo > [class*="col-"] {
+            float: none;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .content-titulo img {
+            width: auto;
+            height: 95px;   
+        }
+
+        .content-titulo .titulo {
+            vertical-align: middle;
+            float: left;
+        }
+
+        /* TÍTULO BAJADO UN POCO MÁS */
+        .content-titulo .titulo h2 {
+            color: #202F50;
+            margin: 0;
+            margin-top: 24px; 
+            font-size: 30px;
+            font-weight: normal;
+        }
+
+        .content-titulo .redes-sociales {
+            position: absolute;
+            top: 0px;
+            right: 0px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-        }
-        .logo-text {
-            color: red;
-            font-size: 1.8rem;
-            font-weight: bold;
-            font-style: italic;
-        }
-        .menu-icon, .social-icon { color: #fff; font-size: 1.4rem; }
-
-        /* Aviso válido */
-        .valid-banner {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 1.2rem 1.5rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-bottom: 1px solid #c3e6cb;
         }
 
-        /* Contenedor principal */
+        .btn-facebook-orig {
+            background-color: #3b5998;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 1px 6px;
+            border-radius: 2px;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+        }
+
+        .btn-youtube-orig {
+            background-color: #202F50;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 11px;
+            padding: 2px 5px;
+            border-radius: 2px;
+            font-family: "Arial Black", Gadget, sans-serif;
+            text-decoration: none;
+        }
+
+        .btn-youtube-orig span {
+            color: #cc181e;
+        }
+
+        .separador-redes {
+            display: inline-block;
+            width: 1px;
+            height: 18px;
+            background-color: #D94141;
+            margin: 0 6px;
+        }
+
         .container {
-            padding: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto;
+            width: 95% !important;
+            padding: 0 !important;
         }
 
-        /* Tarjeta de datos */
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 2rem;
+        @media (min-width: 1400px){
+            .container {
+                width: 1400px !important;
+            }
         }
-        .card-header {
-            background-color: #f8f9fa;
-            padding: 1rem 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-bottom: 1px solid #ddd;
-        }
-        .card-body { padding: 1.5rem; }
-        .data-row {
-            display: flex;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        .data-row:last-child { border-bottom: none; }
-        .label {
-            font-weight: 600;
-            width: 120px;
-            color: #444;
-        }
-        .value { flex: 1; color: #222; }
 
-        /* Sección QR */
-        .qr-section {
+        #dtDatosRegistro {
+            margin-top: 0px;
+        }
+
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+            border-radius: 0px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+        }
+
+        .alert-success h4.alert-heading {
+            font-size: 18px;
+            font-weight: normal !important;
+            margin-top: 0;
+            margin-bottom: 0;
+            letter-spacing: 0.3px;
+        }
+
+        .alert-success hr {
+            border-top-color: #c9e2b3;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .panel-default {
+            border-color: #ddd;
+            border-radius: 2px;
+            box-shadow: none;
+            margin-bottom: 25px;
+        }
+
+        .panel-default > .panel-heading {
+            color: #333;
+            background-color: #f5f5f5;
+            border-color: #ddd;
+            padding: 10px 15px;
+        }
+
+        .panel-body {
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .table-user-information {
+            margin-bottom: 0;
+            width: 100%;
+        }
+
+        .table-user-information > tbody > tr > td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .table-user-information > tbody > tr:first-child > td {
+            border-top: 1px solid #ddd;
+        }
+
+        /* SE QUITA LA LÍNEA INFERIOR DE LA ÚLTIMA FILA (DÍA) */
+        .table-user-information > tbody > tr:last-child > td {
+            border-bottom: none !important;
+            padding-bottom: 8px;
+        }
+
+        .table-user-information > tbody > tr > td:first-child {
+            width: 20%;
+            color: #333;
+        }
+
+        /* FRANJA INFERIOR */
+        footer.container {
+            background-color: #fff;
+            padding: 17px 15px !important; 
+            margin-top: 15px;
+            margin-bottom: 25px;
             text-align: center;
-            padding: 1.5rem;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            background: #fafafa;
+            border-top: 1px solid #e7e7e7;
         }
-        .qr-title {
-            font-weight: 600;
-            margin-bottom: 1rem;
+
+        footer div p {
+            margin: 0 !important;
+            font-size: 13px;
+            color: #333;
+        }
+
+        footer div b {
             color: #202F50;
         }
-        .qr-img {
-            max-width: 200px;
-            margin: 0 auto 0.5rem;
-            display: block;
-            border: 4px solid #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .qr-desc {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Pie de página */
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            color: #555;
-            font-size: 0.95rem;
-        }
-        footer b { color: #202F50; }
     </style>
 </head>
 <body>
-    <!-- Barra superior -->
-    <header class="top-bar">
-        <span class="menu-icon">☰</span>
-        <span class="logo-text">ande</span>
-        <span class="social-icon">f</span>
-    </header>
 
-    <!-- Aviso de certificado válido -->
-    <div class="valid-banner">CERTIFICADO VÁLIDO</div>
+    <form method="post" action="#" id="form1">
+        
+        <!-- ENCABEZADO -->
+        <header>
+            <div class="menu_bar">
+                <div class="bt-menu">
+                    <i class="icon-menu"></i><i style="color:red;" class="icon-ande-letras"></i> 
+                    <span class="icon-facebook facebook"></span>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+            <div class="menu-fondo"></div>
+            <div class="container-fluid">
+                <div class="row content-titulo">
+                    <div class="col-md-1">
+                        <a href="https://apv.ande.cr" title="Inicio">
+                            <img src="https://apv.ande.cr/images/Logo-ANDE.png" alt="LogoAnde" />
+                        </a>
+                    </div>
+                    <div class="col-md-11 titulo">
+                        <h2 title="ANDE APV">ANDE APV 2026</h2>
+                    </div>
+                    <div class="redes-sociales">
+                        <a href="#" class="btn-facebook-orig">f</a>
+                        <div class="separador-redes"></div>
+                        <a href="#" class="btn-youtube-orig">You<span>Tube</span></a>
+                    </div>
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="https://www.ande.cr/"><span class="glyphicon glyphicon-home"></span> Página ANDE</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- Contenido principal -->
-    <main class="container">
-        <div class="card">
-            <div class="card-header">Validación de Autenticidad de Certificado</div>
-            <div class="card-body">
-                <div class="data-row">
-                    <span class="label">Cédula</span>
-                    <span class="value">701640376</span>
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="container">
+            <div id="dtDatosRegistro">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">CERTIFICADO VÁLIDO</h4>
+                    <p></p>
+                    <hr/>
+                    <p class="mb-0"></p>
                 </div>
-                <div class="data-row">
-                    <span class="label">Nombre</span>
-                    <span class="value">MATAMOROS ZARATE JEREMIAS</span>
-                </div>
-                <div class="data-row">
-                    <span class="label">Día</span>
-                    <span class="value">Miercoles 28 de Octubre de 2026</span>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <b>Validación de Autenticidad de Certificado</b>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12 col-lg-12">
+                            <br />
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Cédula</td>
+                                        <td>701640376</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nombre</td>
+                                        <td>ARCE CAMPOS HEYLIN VANESSA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Día</td>
+                                        <td>Viernes 23 de Octubre de 2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- PIE DE PÁGINA -->
+        <footer class="container">
+            <div>
+                <p>&copy; 2026 <b>Sindicato ANDE</b> &middot; Dpto. Inform&aacute;tica</p>
+            </div>
+        </footer>
 
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2026 <b>Sindicato ANDE</b> · Dpto. Informática</p>
-    </footer>
+    </form>
+
+    <!-- JS de Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
